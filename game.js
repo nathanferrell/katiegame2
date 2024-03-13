@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         ctx.drawImage(img, 0, 0);
         startTimer();
     };
-    img.src = 'https://nathanferrell.github.io/katiegame/images/cropkatietest.png';
+    img.src = 'https://nathanferrell.github.io/katiegame2/images/cropkatietest.png';
  
 
     canvas.addEventListener('click', function(event) {
