@@ -8,3 +8,61 @@ body {
 #info {
     margin-top: 10px;
 }
+
+#questionnaireSection {
+    padding: 20px;
+    border: 2px solid #007bff;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+#questionnaireForm {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Creates space between form elements */
+}
+
+#questionnaireForm label {
+    font-weight: bold;
+}
+
+#questionnaireForm button {
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#questionnaireForm button:hover {
+    background-color: #0056b3;
+}
+
+#gameInstructionsSection {
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#gameInstructionsSection button {
+    padding: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+#gameInstructionsSection button:hover {
+    background-color: #218838;
+}
+
+#gameSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
