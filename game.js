@@ -1,4 +1,33 @@
 document.addEventListener('DOMContentLoaded', (event) => {
+    const questionnaireForm = document.getElementById('questionnaireForm');
+    const gameInstructionsSection = document.getElementById('gameInstructionsSection');
+    const gameSection = document.getElementById('gameSection');
+    const startGameButton = document.getElementById('startGameButton');
+
+    questionnaireForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        // Hide questionnaire and show game instructions
+        questionnaireForm.style.display = 'none';
+        gameInstructionsSection.style.display = 'block';
+    });
+
+    startGameButton.addEventListener('click', function() {
+        // Hide game instructions and show the game
+        gameInstructionsSection.style.display = 'none';
+        gameSection.style.display = 'block';
+        initializeGame();
+    });
+
+    function initializeGame() {
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        const infoDiv = document.getElementById('info');
+        const img = new Image();
+        let foundDifferences = [];
+        let timer = null;
+        let gameComplete = false;
+        
+   document.addEventListener('DOMContentLoaded', (event) => {
     const canvas = document.getElementById('gameCanvas');
     const ctx = canvas.getContext('2d');
     const infoDiv = document.getElementById('info');
@@ -88,3 +117,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         }, 1000);
     }
 });
+    }
+});
+
+
