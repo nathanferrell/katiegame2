@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         e.preventDefault();
         
         // Collect form data
-        const formData = {
+     /*   const formData = {
             name: document.getElementById('name').value,
             age: document.getElementById('age').value,
             gender: document.getElementById('gender').value,
