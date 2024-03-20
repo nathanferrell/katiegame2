@@ -41,8 +41,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         e.preventDefault();
         
         // Collect form data
-     /*   const formData = {
-            name: document.getElementById('name').value,
+       const formData = {
             age: document.getElementById('age').value,
             gender: document.getElementById('gender').value,
             sleepTime: document.getElementById('sleepTime').value,
@@ -51,12 +50,12 @@ document.addEventListener('DOMContentLoaded', (event) => {
         };
         
         // Save the form data to Firestore
-        /*try {
+        try {
             const docRef = await db.collection('surveyResponses').add(formData);
             console.log("Survey response saved with ID: ", docRef.id);
         } catch (error) {
             console.error("Error saving survey response: ", error);
-        } */
+        } 
 
         // Hide questionnaire and show game instructions
         questionnaireSection.style.display = 'none';
