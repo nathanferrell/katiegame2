@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', (event) => {
+    // Survey form elements
     const questionnaireForm = document.getElementById('questionnaireForm');
     const gameInstructionsSection = document.getElementById('gameInstructionsSection');
     const gameSection = document.getElementById('gameSection');
@@ -11,31 +12,16 @@ document.addEventListener('DOMContentLoaded', (event) => {
     let timer = null;
     let gameComplete = false;
 
+    // Difference areas
     const differenceAreas = [
-        [92, 308, 111, 332],
-        [296, 297, 360, 332],
-        [422, 371, 422, 386],
-        [422, 370, 475, 410],
-        [441, 440, 466, 487],
-        [432, 512, 451, 534],
-        [411, 483, 438, 507],
-        [347, 415, 368, 438],
-        [233, 398, 264, 428],
-        [240, 375, 252, 387],
-        [144, 542, 204, 570],
-        [79, 496, 104, 506],
-        [71, 423, 98, 453],
-        [134, 464, 159, 494],
-        [310, 500, 341, 534],
-        [291, 496, 304, 516],
-        [390, 540, 413, 567],
-        [292, 452, 307, 466],
-        [248, 429, 262, 444],
-        [59, 335, 80, 368],
-        [130, 423, 150, 442],
-        [200, 424, 223, 446],
-        [150, 414, 170, 430],
-        [229, 485, 248, 506]
+        [92, 308, 111, 332], [296, 297, 360, 332], [422, 371, 422, 386],
+        [422, 370, 475, 410], [441, 440, 466, 487], [432, 512, 451, 534],
+        [411, 483, 438, 507], [347, 415, 368, 438], [233, 398, 264, 428],
+        [240, 375, 252, 387], [144, 542, 204, 570], [79, 496, 104, 506],
+        [71, 423, 98, 453], [134, 464, 159, 494], [310, 500, 341, 534],
+        [291, 496, 304, 516], [390, 540, 413, 567], [292, 452, 307, 466],
+        [248, 429, 262, 444], [59, 335, 80, 368], [130, 423, 150, 442],
+        [200, 424, 223, 446], [150, 414, 170, 430], [229, 485, 248, 506]
     ];
 
     img.onload = function() {
@@ -43,16 +29,49 @@ document.addEventListener('DOMContentLoaded', (event) => {
     };
     img.src = 'https://nathanferrell.github.io/katiegame2/images/cropkatietest.png';
 
-    questionnaireForm.addEventListener('submit', function(e) {
+    // Handle questionnaire submission
+    questionnaireForm.addEventListener('submit', async function(e) {
         e.preventDefault();
+        
+        // Collect form data
+        const formData = {
+            name: document.getElementById('name').value,
+            age: document.getElementById('age').value,
+            gender: document.getElementById('gender').value,
+            sleepTime: document.getElementById('sleepTime').value,
+            wakeTime: document.getElementById('wakeTime').value,
+            sleepHours: document.getElementById('sleepHours').value,
+        };
+        
+        // Save the form data to Firestore
+        try {
+            const docRef = await db.collection('surveyResponses').add(formData);
+            console.log("Survey response saved with ID: ", docRef.id);
+        } catch (error) {
+            console.error("Error saving survey response: ", error);
+        }
+
+        // Hide questionnaire and show game instructions
         questionnaireForm.style.display = 'none';
         gameInstructionsSection.style.display = 'block';
     });
 
+    // Handle "Start Game" button click
     startGameButton.addEventListener('click', function() {
+        // Hide instructions and show the game
         gameInstructionsSection.style.display = 'none';
         gameSection.style.display = 'block';
         initializeGame();
+    });
+
+    // Check for differences on canvas click
+    canvas.addEventListener('click', function(event) {
+        if (gameComplete) return;
+
+        const rect = canvas.getBoundingClientRect();
+        const x = event.clientX - rect.left;
+        const y = event.clientY - rect.top;
+        checkDifference(x, y);
     });
 
     function checkDifference(x, y) {
@@ -75,7 +94,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
     function drawHighlight(x, y, width, height) {
         ctx.strokeStyle = 'lime';
         ctx.lineWidth = 5;
-        ctx.strokeRect(x, y, width, height);
+        ctx
+        ctx.strokeRect(x, y, width, height); // Draw highlight rectangle around found difference
     }
 
     function startTimer() {
@@ -93,19 +113,16 @@ document.addEventListener('DOMContentLoaded', (event) => {
     }
 
     function initializeGame() {
-        gameComplete = false;
         foundDifferences = [];
+        gameComplete = false;
+        // Clear any previous game state
         ctx.clearRect(0, 0, canvas.width, canvas.height);
+        // Redraw the image for a new game
         ctx.drawImage(img, 0, 0);
+        // Reset and start the timer
+        if (timer) {
+            clearInterval(timer);
+        }
         startTimer();
-        canvas.addEventListener('click', function(event) {
-            if (gameComplete) return;
-
-            const rect = canvas.getBoundingClientRect();
-            const x = event.clientX - rect.left
-            const y = event.clientY - rect.top;
-            checkDifference(x, y);
-        });
     }
 });
-
