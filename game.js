@@ -1,4 +1,10 @@
 document.addEventListener('DOMContentLoaded', (event) => {
+    console.log('questionnaireForm:', document.getElementById('questionnaireForm'));
+    console.log('gameInstructionsSection:', document.getElementById('gameInstructionsSection'));
+    console.log('gameSection:', document.getElementById('gameSection'));
+    console.log('startGameButton:', document.getElementById('startGameButton'));
+    console.log('gameCanvas:', document.getElementById('gameCanvas'));
+    console.log('infoDiv:', document.getElementById('info'));
     // Survey form elements
     const questionnaireSection = document.getElementById('questionnaireSection');
     const questionnaireForm = document.getElementById('questionnaireForm');
