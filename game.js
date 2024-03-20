@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', (event) => {
     // Survey form elements
+    const questionnaireSection = document.getElementById('questionnaireSection');
     const questionnaireForm = document.getElementById('questionnaireForm');
     const gameInstructionsSection = document.getElementById('gameInstructionsSection');
     const gameSection = document.getElementById('gameSection');
@@ -52,7 +53,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         } */
 
         // Hide questionnaire and show game instructions
-        questionnaireForm.style.display = 'none';
+        questionnaireSection.style.display = 'none';
         gameInstructionsSection.style.display = 'block';
     });
 
