@@ -44,12 +44,12 @@ document.addEventListener('DOMContentLoaded', (event) => {
         };
         
         // Save the form data to Firestore
-        try {
+        /*try {
             const docRef = await db.collection('surveyResponses').add(formData);
             console.log("Survey response saved with ID: ", docRef.id);
         } catch (error) {
             console.error("Error saving survey response: ", error);
-        }
+        } */
 
         // Hide questionnaire and show game instructions
         questionnaireForm.style.display = 'none';
