@@ -1,10 +1,4 @@
 document.addEventListener('DOMContentLoaded', (event) => {
-    console.log('questionnaireForm:', document.getElementById('questionnaireForm'));
-    console.log('gameInstructionsSection:', document.getElementById('gameInstructionsSection'));
-    console.log('gameSection:', document.getElementById('gameSection'));
-    console.log('startGameButton:', document.getElementById('startGameButton'));
-    console.log('gameCanvas:', document.getElementById('gameCanvas'));
-    console.log('infoDiv:', document.getElementById('info'));
     // Survey form elements
     const questionnaireSection = document.getElementById('questionnaireSection');
     const questionnaireForm = document.getElementById('questionnaireForm');
@@ -49,13 +43,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             sleepHours: document.getElementById('sleepHours').value,
         };
         
-        // Save the form data to Firestore
-        try {
-            const docRef = await addDoc(collection(window.db, "surveyResponses"), formData);
-            console.log("Document written with ID: ", docRef.id);
-        } catch (error) {
-            console.error("Error adding document: ", error);
-        }
+   
 
         // Hide questionnaire and show game instructions
         questionnaireSection.style.display = 'none';
