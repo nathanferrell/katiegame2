@@ -3,26 +3,6 @@
 <head>
     <title>Spot the Difference Game</title>
     <link rel="stylesheet" type="text/css" href="https://nathanferrell.github.io/katiegame2/style.css">
-    <script type="module">
-        import { initializeApp } from "firebase/app";
-        import { getFirestore, collection, addDoc } from "firebase/firestore";
-        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-analytics.js";
-        const firebaseConfig = {
-            apiKey: "AIzaSyDunYYvMbCGWlDkknZSBK0I-Hv5DkoesC4",
-            authDomain: "katiegame-713b2.firebaseapp.com",
-            projectId: "katiegame-713b2",
-            storageBucket: "katiegame-713b2.appspot.com",
-            messagingSenderId: "120347146380",
-            appId: "1:120347146380:web:82a71a262c17f3c20f23a9",
-            measurementId: "G-SEQK0V75RK"
-        };
-        const app = initializeApp(firebaseConfig);
-        const analytics = getAnalytics(app);
-        const db = getFirestore(app);
-    
-    // Expose db to other scripts
-        window.db = db;
-    </script>
 </head>
 <body>
     <div id="questionnaireSection">
